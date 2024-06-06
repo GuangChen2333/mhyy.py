@@ -1,14 +1,15 @@
+# 多客户端支持
 在 `2.1.0` 版本中，我们添加了 mhyy.py 的第二种客户端类型——
 [PCWeb](../api/interface.md#userclienttype)
 
 事实上，你可以在 [UserClientType](../api/interface.md#userclienttype) 中找到
 你所对应平台的 `client_type` 值。
 
-!!! Tips
-
-    请确保你的 Headers 与用户字段的 client_type 相对应。
-
-    若你还没有获取 Headers，请转到 [获取你的 Headers](../appendix/get_headers.md)
+>[!TIP]
+>
+>    请确保你的 Headers 与用户字段的 client_type 相对应。
+>
+>    若你还没有获取 Headers，请转到 [获取你的 Headers](../appendix/get_headers.md)
 
 ## 米哈云游网页版
 
