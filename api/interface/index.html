@@ -1,0 +1,1133 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../appendix/get_headers/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>开发人员接口 - mhyy.py</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#client" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="mhyy.py" class="md-header__button md-logo" aria-label="mhyy.py" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            mhyy.py
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              开发人员接口
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Mooneze/mhyy.py" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mooneze/mhyy.py
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="mhyy.py" class="md-nav__button md-logo" aria-label="mhyy.py" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    mhyy.py
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Mooneze/mhyy.py" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mooneze/mhyy.py
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    使用
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            使用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/quick_start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    快速入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/multi_client_support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多客户端支持
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    附录
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            附录
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/get_headers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    获取你的 Headers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API 参考
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API 参考
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    开发人员接口
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    开发人员接口
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gametype" class="md-nav__link">
+    <span class="md-ellipsis">
+      GameType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notificationstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      NotificationStatus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notificationtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      NotificationType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      User
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userchannel" class="md-nav__link">
+    <span class="md-ellipsis">
+      UserChannel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userclienttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      UserClientType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walletdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      WalletData
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WalletData">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coin" class="md-nav__link">
+    <span class="md-ellipsis">
+      coin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      free_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      stat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play_card" class="md-nav__link">
+    <span class="md-ellipsis">
+      play_card
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gametype" class="md-nav__link">
+    <span class="md-ellipsis">
+      GameType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notificationstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      NotificationStatus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notificationtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      NotificationType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      User
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userchannel" class="md-nav__link">
+    <span class="md-ellipsis">
+      UserChannel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userclienttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      UserClientType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walletdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      WalletData
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WalletData">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coin" class="md-nav__link">
+    <span class="md-ellipsis">
+      coin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      free_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      stat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play_card" class="md-nav__link">
+    <span class="md-ellipsis">
+      play_card
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>开发人员接口</h1>
+
+<h2 id="client">Client</h2>
+<p><em>mhyy.Client()</em></p>
+<blockquote>
+<p>米哈云游客户端。</p>
+</blockquote>
+<p><code>versions</code>: dict</p>
+<blockquote>
+<p>所有游戏类型的版本号字典，若只想获取指定游戏类型的版本号，请使用 get_client_version() 方法。</p>
+</blockquote>
+<p><code>get_wallet_data</code>(self, user: <a href="#user">User</a>)</p>
+<blockquote>
+<p>获取指定用户的钱包数据。</p>
+<p><strong>形参:</strong></p>
+<ul>
+<li>user (<a href="#User"><strong>User</strong></a>): 发起请求的用户。</li>
+</ul>
+<p><strong>返回值:</strong> <a href="#walletdata"><code>WalletData</code></a> - 该用户的钱包数据。</p>
+</blockquote>
+<p><code>get_notifications</code>(self, user: <a href="#user">User</a>, *, status: Optional[<a href="#notificationstatus">NotificationStatus</a>] = None,
+type_: Optional[<a href="#notificationtype">NotificationType</a>] = None, is_sort: Optional[bool] = True)</p>
+<blockquote>
+<p>获取指定用户的通知信息。</p>
+<p><strong>形参:</strong></p>
+<ul>
+<li>user (<a href="#User"><strong>User</strong></a>): 发起请求的用户。</li>
+<li>status (<strong>Optional[<a href="#notificationstatus">NotificationStatus</a>]</strong>): 筛选指定的通知状态。</li>
+<li>type_ (<strong>Optional[<a href="#notificationtype">NotificationType</a>]</strong>): 筛选指定的通知种类。</li>
+<li>Optional (<strong>Optional[bool]</strong>): 是否排序。</li>
+</ul>
+<p><strong>返回值:</strong> <code>List[</code><a href="#notification"><code>Notification</code></a><code>]</code> - 一个列表，包含了指定用户的通知信息。</p>
+</blockquote>
+<p><code>get_client_version</code>(self, game_type: <a href="#gametype">GameType</a>)</p>
+<blockquote>
+<p>获取指定游戏类型的版本号，若想获取字典类型的所有版本号，请使用 versions 属性。</p>
+<p><strong>形参:</strong></p>
+<ul>
+<li>game_type (<a href="#gametype"><strong>GameType</strong></a>): 游戏类型。</li>
+</ul>
+<p><strong>返回值:</strong> <code>str</code> - 该游戏类型的版本号。</p>
+</blockquote>
+<h2 id="gametype">GameType</h2>
+<p><em>class mhyy.GameType</em></p>
+<blockquote>
+<p>游戏类型。</p>
+</blockquote>
+<p><code>GenshinImpact</code> = 0</p>
+<blockquote>
+<p>云·原神。</p>
+</blockquote>
+<p><code>StarRail</code> = 1</p>
+<blockquote>
+<p>云·星穹铁道。</p>
+</blockquote>
+<h2 id="notification">Notification</h2>
+<blockquote>
+<p>通知类。</p>
+</blockquote>
+<p><em>class mhyy.Notification</em>
+(id_: str, status: <a href="#notificationstatus">NotificationStatus</a>, type_:
+<a href="#notificationtype">NotificationType</a>, priority: int, source: str, desc: str, msg: str, created_at: str)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里不提供构造方法，因为根本没有导出。</p>
+</div>
+<p><code>id</code>: str</p>
+<blockquote>
+<p>通知 ID。</p>
+</blockquote>
+<p><code>status</code>: <a href="#notificationstatus">NotificationStatus</a></p>
+<blockquote>
+<p>通知状态。</p>
+</blockquote>
+<p><code>type</code>: <a href="#notificationtype">NotificationType</a></p>
+<blockquote>
+<p>通知种类。</p>
+</blockquote>
+<p><code>priority</code>: int</p>
+<blockquote>
+<p>作用未知，根据名称推测是通知的优先级。</p>
+</blockquote>
+<p><code>source</code>: str</p>
+<blockquote>
+<p>作用未知。</p>
+</blockquote>
+<p><code>desc</code>: str</p>
+<blockquote>
+<p>作用未知，根据名称推测是通知的描述。</p>
+</blockquote>
+<p><code>msg</code>: str</p>
+<blockquote>
+<p>一个字符串，包含了 json 文本格式的该通知的内容。</p>
+</blockquote>
+<p><code>create_at</code>: str</p>
+<blockquote>
+<p>一个字符串，是秒级的时间戳 (10位)，描述了该通知何时被创建。</p>
+</blockquote>
+<p><code>from_data_dict</code>(cls, data: dict)</p>
+<blockquote>
+<p>从特定的数据结构生成 Notification。</p>
+<p><strong>形参:</strong></p>
+<ul>
+<li>data (<strong>dict</strong>): 消息数据。</li>
+</ul>
+<p><strong>返回值:</strong> <a href="#notification"><code>Notification</code></a> - 包装后的消息数据。</p>
+</blockquote>
+<h2 id="notificationstatus">NotificationStatus</h2>
+<p><em>class mhyy.NotificationStatus</em></p>
+<blockquote>
+<p>通知状态。</p>
+</blockquote>
+<p><code>Read</code> = 'NotificationStatusRead'</p>
+<blockquote>
+<p>已读。</p>
+</blockquote>
+<p><code>Unread</code> = 'NotificationStatusUnread'</p>
+<blockquote>
+<p>未读。</p>
+</blockquote>
+<p><code>Undefined</code> = 'NotificationStatusUndefined'</p>
+<blockquote>
+<p>未定义。</p>
+</blockquote>
+<p><code>get_status_by_name</code>(cls, status: str)</p>
+<blockquote>
+<p>从字符串获取枚举成员。</p>
+<p><strong>形参:</strong></p>
+<ul>
+<li>status (<strong>str</strong>): 成员字符串。</li>
+</ul>
+<p><strong>返回值:</strong> <a href="#notificationstatus"><code>NotificationStatus</code></a> - 枚举成员。</p>
+</blockquote>
+<h2 id="notificationtype">NotificationType</h2>
+<p><em>class mhyy.NotificationType</em></p>
+<blockquote>
+<p>通知种类。</p>
+</blockquote>
+<p><code>Popup</code> = 'NotificationTypePopup'</p>
+<blockquote>
+<p>弹窗通知。</p>
+</blockquote>
+<p><code>Undefined</code> = 'NotificationTypeUndefined'</p>
+<blockquote>
+<p>未定义。</p>
+</blockquote>
+<p><code>get_type_by_name</code>(cls, type_: str)</p>
+<blockquote>
+<p>从字符串获取枚举成员。</p>
+<p><strong>形参:</strong></p>
+<ul>
+<li>status (<strong>str</strong>): 成员字符串。</li>
+</ul>
+<p><strong>返回值:</strong> <a href="#notificationtype"><code>NotificationType</code></a> - 枚举成员。</p>
+</blockquote>
+<h2 id="user">User</h2>
+<p><em>class mhyy.User(combo_token: str, sys_version: str, device_id: str, device_name: str, device_model: str,
+client_type: <a href="#userclienttype">UserClientType</a>, *, game_type: Optional[<a href="#gametype">GameType</a>] = None, 
+channel: Optional[<a href="#userchannel">UserChannel</a>] = UserChannel.Official
+)</em></p>
+<blockquote>
+<p>用户类。</p>
+<p>形参:</p>
+<ul>
+<li>combo_token (<strong>str</strong>): 对应 headers 中的 x-rpc-combo_token。</li>
+<li>sys_version (<strong>str</strong>): 对应 headers 中的 x-rpc-sys_version。</li>
+<li>device_id (<strong>str</strong>): 对应 headers 中的 x-rpc-device_id。</li>
+<li>device_name (<strong>str</strong>): 对应 headers 中的 x-rpc-device_name。</li>
+<li>device_model (<strong>str</strong>): 对应 headers 中的 x-rpc-device_model。</li>
+<li>client_type (<strong><a href="#userclienttype">UserClientType</a></strong>): 用户的客户端种类。</li>
+<li>game_type (<strong>Optional[<a href="#gametype">GameType</a>]</strong>): 游戏类型，若为空则将会从 combo_token 中自动识别。</li>
+<li>channel (<strong>Optional[<a href="#userchannel">UserChannel</a>]</strong>): 用户的游戏渠道。</li>
+</ul>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里不提供成员的文档说明，因为他是形参的 Getter。</p>
+</div>
+<p><code>combo_token</code>: str</p>
+<p><code>sys_version</code>: str</p>
+<p><code>device_id</code>: str</p>
+<p><code>device_name</code>: str</p>
+<p><code>device_model</code>: str</p>
+<p><code>client_type</code>: str</p>
+<p><code>game_type</code>: <a href="#gametype">GameType</a></p>
+<p><code>channel</code>: <a href="#userchannel">UserChannel</a></p>
+<p><code>get_user_headers</code>(self)</p>
+<blockquote>
+<p>获取该用户的 headers。</p>
+<p><strong>返回值:</strong> dict - 字典格式的该用户的 headers。</p>
+</blockquote>
+<h2 id="userchannel">UserChannel</h2>
+<p><em>class mhyy.UserChannel</em></p>
+<blockquote>
+<p>游戏渠道。</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>目前 mhyy.py 仅支持官方服务器的操作。</p>
+</div>
+<p><code>Official</code> = 0</p>
+<blockquote>
+<p>官方服。</p>
+</blockquote>
+<h2 id="userclienttype">UserClientType</h2>
+<p><em>class mhyy.UserClientType</em></p>
+<blockquote>
+<p>客户端类型。</p>
+</blockquote>
+<p><code>Android</code> = 2</p>
+<blockquote>
+<p>安卓。</p>
+</blockquote>
+<p><code>PCWeb</code> = 16</p>
+<blockquote>
+<p>PC 网页版。</p>
+</blockquote>
+<h2 id="walletdata">WalletData</h2>
+<p><em>class mhyy.WalletData</em></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>事实上，mhyy.WalletData包含五个子类，分别是
+<code>mhyy.CoinData</code>、<code>mhyy.FreeTimeData</code>、<code>mhyy.StatusData</code>、
+<code>mhyy.StatData</code>、<code>mhyy.PlayCardData</code>。</p>
+<p>但这些成员子类都没有导出且<code>mhyy.WalletData</code>与他的成员子类都是 <code>dataclass</code>。
+没有构造函数，仅供读取数据。</p>
+<p>所以在本文档中不会描述其五个子类，仅当作成员描写。</p>
+</div>
+<h3 id="coin"><code>coin</code></h3>
+<blockquote>
+<p>用户的 原点 / 星云币 时长数据。</p>
+</blockquote>
+<p><code>coin.coin_num</code>: int</p>
+<blockquote>
+<p>原点 / 星云币 数。</p>
+</blockquote>
+<p><code>coin.free_coin_num</code>: int</p>
+<blockquote>
+<p>免费 原点 / 星云币 数。</p>
+</blockquote>
+<p><code>coin.coin_limit</code>: int</p>
+<blockquote>
+<p>原点 / 星云币 的数量上限。</p>
+</blockquote>
+<p><code>coin.exchange</code>: int</p>
+<blockquote>
+<p>与原点时长的汇率。通常来说，10 原点 / 星云币 = 1 游戏时长。</p>
+</blockquote>
+<h3 id="free_time"><code>free_time</code></h3>
+<blockquote>
+<p>用户的免费时长数据。</p>
+</blockquote>
+<p><code>free_time.send_freetime</code>: int</p>
+<blockquote>
+<p>若该用户是本日第一次登录，那么此处的值为每日赠送的免费时长 (min)。反之，此处恒为 0。</p>
+</blockquote>
+<p><code>free_time.free_time</code>: int</p>
+<blockquote>
+<p>总免费时长 (min)。</p>
+</blockquote>
+<p><code>free_time.free_time_limit</code>: int</p>
+<blockquote>
+<p>免费时长上限 (min)。</p>
+</blockquote>
+<p><code>free_time.over_freetime</code>: int</p>
+<blockquote>
+<p>该用户是本日第一次登录且赠送的时长有一部分超出了免费时长上限，那么此处的值为溢出的免费时长 (min)。</p>
+</blockquote>
+<h3 id="status"><code>status</code></h3>
+<blockquote>
+<p>未知数据</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这是一条未知的数据，具体内容待补充。</p>
+</div>
+<p><code>status.status</code>: int</p>
+<p><code>status.msg</code>: str</p>
+<p><code>status.total_time_status</code>: int</p>
+<p><code>status.status_new</code>: int</p>
+<h3 id="stat"><code>stat</code></h3>
+<blockquote>
+<p>未知数据</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这是一条未知的数据，具体内容待补充。</p>
+</div>
+<p><code>vip_point</code>: str</p>
+<h3 id="play_card"><code>play_card</code></h3>
+<blockquote>
+<p>用户的畅玩卡数据</p>
+</blockquote>
+<p><code>play_card.expire</code>: str</p>
+<blockquote>
+<p>畅玩卡过期时间（格式未知）</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这是一条未知的数据，请谨慎使用。</p>
+</div>
+<p><code>play_card.msg</code>: str</p>
+<blockquote>
+<p>畅玩卡信息</p>
+</blockquote>
+<p><code>play_card.short_msg</code>: str</p>
+<blockquote>
+<p>畅玩卡短信息 / 状态</p>
+</blockquote>
+<p><code>play_card.play_card_limit</code>: str</p>
+<blockquote>
+<p>未知</p>
+</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这是一条未知的数据，具体内容待补充。</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.path"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
